@@ -32,8 +32,8 @@
   }
 
   h2 {
-    color: #004d99;
-    text-align: center;
+    color: #8B4513;
+    text-align: left;
     font-weight: 900;
     margin-bottom: 25px;
     text-shadow: 2px 2px 4px #a0d8ff;
@@ -126,8 +126,9 @@
 </head>
 <body>
 
+
 <form id="form">
-  <h2><font size=10>Namtan SHOP 😊</font></h2>
+  <h2><font size=8>Namtan SHOP 🛒😊</font></h2>
 
   <label><span class="icon">👤</span> ชื่อ:</label>
   <input type="text" name="name" required />
@@ -148,11 +149,60 @@
     <option value="สิ้นเดือน">สิ้นเดือน</option>
   </select>
 
+<label><span class="icon">💸</span> ราคาขาย:</label>
+  <input type="text" name="price" id="price" required />
+
+  <label><span class="icon">🧾</span> ต้นทุน:</label>
+  <input type="text" name="cost" id="cost" required />
+
+  <label><span class="icon">📈</span> กำไร:</label>
+  <input type="text" name="profit" id="profit" readonly />
+
+
   <label><span class="icon">📝</span> เพิ่มเติม:</label>
   <input type="text" name="remark" />
+
+
 
   <button type="submit">ส่งข้อมูล</button>
 </form>
 
+<script>
+  const form = document.getElementById('form');
+  const priceInput = document.getElementById('price');
+  const costInput = document.getElementById('cost');
+  const profitInput = document.getElementById('profit');
+
+  function calculateProfit() {
+    const price = parseFloat(priceInput.value) || 0;
+    const cost = parseFloat(costInput.value) || 0;
+    const profit = price - cost;
+    profitInput.value = profit.toFixed(2);
+  }
+
+  priceInput.addEventListener('input', calculateProfit);
+  costInput.addEventListener('input', calculateProfit);
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault(); // ป้องกันไม่ให้ reload หน้า
+
+    const formData = new FormData(form);
+    const data = new URLSearchParams(formData);
+
+    fetch('https://script.google.com/macros/s/AKfycbxjwYaJ7_fTM29qjxGbst8c3gPRb67tzmRbcD0p1vNt8SdYFKaCWd_mQcV839i1DFZ0/exec', {
+      method: 'POST',
+      body: data
+    })
+    .then(res => res.text())
+    .then(response => {
+      alert("ส่งข้อมูลเรียบร้อยแล้ว: " + response);
+      form.reset();
+    })
+    .catch(err => alert("เกิดข้อผิดพลาด: " + err.message));
+  });
+</script>
+
+
 </body>
 </html>
+
