@@ -1,59 +1,116 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ร้านน้ำตาล</title>
+  <style>
+    body {
+      font-family: 'Sarabun', sans-serif;
+      background-color: #fff9f5;
+      color: #4b2e2e;
+      padding: 30px;
+      margin: 0;
+    }
+
+    h2 {
+      text-align: center;
+      color: #a0522d;
+      margin-bottom: 30px;
+    }
+
+    form {
+      max-width: 500px;
+      margin: auto;
+      background-color: #ffffff;
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+      font-weight: 600;
+      margin-top: 10px;
+      display: block;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin-top: 6px;
+      margin-bottom: 16px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      box-sizing: border-box;
+      font-size: 16px;
+    }
+
+    button[type="submit"] {
+      background-color: #ff8c42;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      width: 100%;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #e67e22;
+    }
+
+    @media (max-width: 600px) {
+      form {
+        padding: 20px;
+      }
+    }
+  </style>
 </head>
 <body>
   <h2>ฟอร์มสั่งซื้อสินค้า</h2>
   <form id="form">
-    <label>ชื่อ:</label><br>
-    <input type="text" name="name" required><br><br>
+    <label>ชื่อ:</label>
+    <input type="text" name="name" required>
 
-    <label>สินค้า:</label><br>
-    <input type="text" name="product" required><br><br>
+    <label>สินค้า:</label>
+    <input type="text" name="product" required>
 
-    <label>จำนวนสินค้า:</label><br>
-    <input type="text" name="total_product" required><br><br>
+    <label>จำนวนสินค้า:</label>
+    <input type="text" name="total_product" required>
 
-    <label>วันที่สั่ง:</label><br>
-    <input type="text" name="date" required><br><br>
+    <label>วันที่สั่ง:</label>
+    <input type="text" name="date" required>
 
-    <label>สถานะ:</label><br>
-    <input type="text" name="status" required><br><br>
+    <label>สถานะ:</label>
+    <input type="text" name="status" required>
 
-    <label>เพิ่มเติม:</label><br>
-    <input type="text" name="remark" required><br><br>
+    <label>เพิ่มเติม:</label>
+    <input type="text" name="remark">
 
     <button type="submit">ส่งข้อมูล</button>
   </form>
 
   <script>
     const scriptURL = 'https://script.google.com/macros/s/AKfycbxjwYaJ7_fTM29qjxGbst8c3gPRb67tzmRbcD0p1vNt8SdYFKaCWd_mQcV839i1DFZ0/exec';
-
     const form = document.getElementById('form');
 
     form.addEventListener('submit', e => {
       e.preventDefault();
 
       fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-  .then(response => {
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    return response.text();
-  })
-  .then(text => {
-    console.log('Response from server:', text);
-    alert("✅ ส่งข้อมูลเรียบร้อยแล้ว!");
-    form.reset();
-  })
-  .catch(error => {
-    console.error('❌ Error!', error);
-    alert("❌ เกิดข้อผิดพลาด! " + error.message);
-  });
-
+        .then(response => {
+          if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+          return response.text();
+        })
+        .then(text => {
+          alert("✅ ส่งข้อมูลเรียบร้อยแล้ว!");
+          form.reset();
+        })
+        .catch(error => {
+          alert("❌ เกิดข้อผิดพลาด: " + error.message);
+        });
     });
   </script>
 </body>
