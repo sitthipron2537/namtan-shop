@@ -5,14 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Namtan SHOP</title>
 
-<!-- ใช้ Google Fonts แบบกลมมน -->
-<link href="https://fonts.googleapis.com
-/css2?family=Baloo+2&display=swap" rel="stylesheet" />
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2&display=swap" rel="stylesheet" />
+
+<!-- Animate.css (Bounce animation) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 
 <style>
   body {
     font-family: 'Baloo 2', cursive;
-    background: #d0f0ff; /* ฟ้าอ่อนสดใส */
+    background: #d0f0ff;
     margin: 0;
     padding: 40px 20px;
     display: flex;
@@ -20,15 +22,14 @@
   }
 
   form {
-    background: #a0d8ff; /* ฟ้าเข้มขึ้นเล็กน้อย */
+    background: #a0d8ff;
     padding: 30px 40px;
     border-radius: 25px;
-    box-shadow:
-      0 8px 15px rgba(0, 102, 204, 0.3),
-      0 0 0 4px #0569c2; /* outline สีฟ้าเข้ม */
+    box-shadow: 0 8px 15px rgba(0, 102, 204, 0.3), 0 0 0 4px #0569c2;
     max-width: 450px;
     width: 100%;
     position: relative;
+    animation: bounceIn 1s ease;
   }
 
   h2 {
@@ -48,12 +49,9 @@
     margin-top: 20px;
   }
 
-  /* ใส่ไอคอนหน้ายิ้มข้าง label */
   label .icon {
-    display: inline-block;
     font-size: 24px;
     margin-right: 10px;
-    user-select: none;
   }
 
   input[type="text"],
@@ -67,21 +65,16 @@
     font-size: 16px;
     background: #d9f0ff;
     color: #004d99;
-    box-shadow:
-      inset 2px 2px 6px #a0d8ff,
-      inset -2px -2px 6px #e0f4ff;
-    transition: border-color 0.3s ease, background-color 0.3s ease;
+    box-shadow: inset 2px 2px 6px #a0d8ff, inset -2px -2px 6px #e0f4ff;
     outline: none;
     font-family: 'Baloo 2', cursive;
   }
 
-  input[type="text"]:focus,
-  input[type="date"]:focus,
+  input:focus,
   select:focus {
     background-color: #ffffff;
     border-color: #003366;
-    box-shadow:
-      0 0 8px 2px #1a75ff;
+    box-shadow: 0 0 8px 2px #1a75ff;
   }
 
   button[type="submit"] {
@@ -95,22 +88,20 @@
     border: none;
     border-radius: 30px;
     cursor: pointer;
-    box-shadow:
-      0 5px 10px rgba(0, 102, 204, 0.6);
-    transition: background 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 5px 10px rgba(0, 102, 204, 0.6);
     font-family: 'Baloo 2', cursive;
+    transition: background 0.3s ease, transform 0.2s ease;
   }
 
-  button[type="submit"]:hover {
+  button:hover {
     background: linear-gradient(45deg, #0073e6, #004d99);
     transform: translateY(-3px);
   }
 
-  button[type="submit"]:active {
+  button:active {
     transform: translateY(1px);
   }
 
-  /* Responsive */
   @media (max-width: 480px) {
     form {
       padding: 20px 25px;
@@ -118,7 +109,7 @@
     label {
       font-size: 16px;
     }
-    button[type="submit"] {
+    button {
       font-size: 18px;
     }
   }
@@ -126,21 +117,20 @@
 </head>
 <body>
 
-
-<form id="form">
-  <h2><font size=8>Namtan SHOP 🛒😊</font></h2>
+<form id="form" class="animate__animated animate__bounceIn">
+  <h2><font size="8">Namtan SHOP 🛒😊</font></h2>
 
   <label><span class="icon">👤</span> ชื่อ:</label>
-  <input type="text" name="name" required />
+  <input type="text" name="name" required>
 
   <label><span class="icon">📦</span> สินค้า:</label>
-  <input type="text" name="product" required />
+  <input type="text" name="product" required>
 
   <label><span class="icon">🔢</span> จำนวนสินค้า:</label>
-  <input type="text" name="total_product" required />
+  <input type="text" name="total_product" required>
 
   <label><span class="icon">📅</span> วันที่สั่ง:</label>
-  <input type="date" name="date" required />
+  <input type="date" name="date" required>
 
   <label><span class="icon">💰</span> สถานะชำระ:</label>
   <select name="status" required>
@@ -149,20 +139,17 @@
     <option value="สิ้นเดือน">สิ้นเดือน</option>
   </select>
 
-<label><span class="icon">💸</span> ราคาขาย:</label>
-  <input type="text" name="price" id="price" required />
+  <label><span class="icon">💸</span> ราคาขาย:</label>
+  <input type="text" name="price" id="price" required>
 
   <label><span class="icon">🧾</span> ต้นทุน:</label>
-  <input type="text" name="cost" id="cost" required />
+  <input type="text" name="cost" id="cost" required>
 
   <label><span class="icon">📈</span> กำไร:</label>
-  <input type="text" name="profit" id="profit" readonly />
-
+  <input type="text" name="profit" id="profit" readonly>
 
   <label><span class="icon">📝</span> เพิ่มเติม:</label>
-  <input type="text" name="remark" />
-
-
+  <input type="text" name="remark">
 
   <button type="submit">ส่งข้อมูล</button>
 </form>
@@ -184,7 +171,7 @@
   costInput.addEventListener('input', calculateProfit);
 
   form.addEventListener('submit', function (e) {
-    e.preventDefault(); // ป้องกันไม่ให้ reload หน้า
+    e.preventDefault();
 
     const formData = new FormData(form);
     const data = new URLSearchParams(formData);
@@ -195,14 +182,12 @@
     })
     .then(res => res.text())
     .then(response => {
-      alert("ส่งข้อมูลเรียบร้อยแล้ว: " + response);
+      alert("✅ ส่งข้อมูลเรียบร้อยแล้ว: " + response);
       form.reset();
     })
-    .catch(err => alert("เกิดข้อผิดพลาด: " + err.message));
+    .catch(err => alert("❌ เกิดข้อผิดพลาด: " + err.message));
   });
 </script>
 
-
 </body>
 </html>
-
