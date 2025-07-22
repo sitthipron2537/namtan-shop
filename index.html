@@ -26,14 +26,22 @@
       e.preventDefault();
 
       fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-        .then(response => {
-          alert("✅ ส่งข้อมูลเรียบร้อยแล้ว!");
-          form.reset();
-        })
-        .catch(error => {
-          alert("❌ เกิดข้อผิดพลาด!");
-          console.error('Error!', error.message);
-        });
+  .then(response => {
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    return response.text();
+  })
+  .then(text => {
+    console.log('Response from server:', text);
+    alert("✅ ส่งข้อมูลเรียบร้อยแล้ว!");
+    form.reset();
+  })
+  .catch(error => {
+    console.error('❌ Error!', error);
+    alert("❌ เกิดข้อผิดพลาด! " + error.message);
+  });
+
     });
   </script>
 </body>
