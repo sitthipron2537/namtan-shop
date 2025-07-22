@@ -1,164 +1,158 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Namtan SHOP</title>
-  <style>
-    body {
-  font-family: 'Sarabun', sans-serif;
-  background-color: #fff9f5;
-  color: #4b2e2e;
-  padding: 30px;
-  margin: 0;
-}
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Namtan SHOP</title>
 
-h2 {
-  text-align: center;
-  color: #a0522d;
-  margin-bottom: 30px;
-  text-shadow: 1px 1px 2px #d69b6e;
-}
+<!-- ใช้ Google Fonts แบบกลมมน -->
+<link href="https://fonts.googleapis.com
+/css2?family=Baloo+2&display=swap" rel="stylesheet" />
 
-form {
-  max-width: 500px;
-  margin: auto;
-  background: linear-gradient(145deg, #ffffff, #f0e6db);
-  padding: 25px;
-  border-radius: 20px;
-  box-shadow:
-    8px 8px 15px #c9b89a,
-    -8px -8px 15px #ffffff;
-  transition: box-shadow 0.3s ease;
-}
-
-form:hover {
-  box-shadow:
-    10px 10px 20px #b8a687,
-    -10px -10px 20px #ffffff;
-}
-
-label {
-  font-weight: 600;
-  margin-top: 15px;
-  display: block;
-  text-shadow: 0 1px 1px #f3e7dc;
-}
-
-input[type="text"],
-input[type="date"],
-select {
-  width: 100%;
-  padding: 12px 15px;
-  margin-top: 6px;
-  margin-bottom: 18px;
-  border: none;
-  border-radius: 12px;
-  font-size: 16px;
-  background: #f9f4ef;
-  box-shadow:
-    inset 5px 5px 10px #d7c9b6,
-    inset -5px -5px 10px #ffffff;
-  transition: all 0.3s ease;
-  outline: none;
-}
-
-input[type="text"]:focus,
-input[type="date"]:focus,
-select:focus {
-  background: #fff;
-  box-shadow:
-    inset 1px 1px 5px #c5b28c,
-    inset -1px -1px 5px #ffffff;
-}
-
-button[type="submit"] {
-  background: linear-gradient(145deg, #ff9e48, #e97400);
-  color: white;
-  padding: 14px 20px;
-  border: none;
-  border-radius: 15px;
-  cursor: pointer;
-  width: 100%;
-  font-size: 18px;
-  font-weight: 700;
-  box-shadow:
-    4px 4px 8px #c26400,
-    -4px -4px 8px #ffb84d;
-  transition: all 0.3s ease;
-}
-
-button[type="submit"]:hover {
-  background: linear-gradient(145deg, #e67e22, #b85a00);
-  box-shadow:
-    2px 2px 5px #974500,
-    -2px -2px 5px #ffad34;
-  transform: translateY(-2px);
-}
-
-button[type="submit"]:active {
-  transform: translateY(1px);
-  box-shadow: none;
-}
-
-@media (max-width: 600px) {
-  form {
-    padding: 20px;
+<style>
+  body {
+    font-family: 'Baloo 2', cursive;
+    background: #d0f0ff; /* ฟ้าอ่อนสดใส */
+    margin: 0;
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
   }
-}
 
-      }
+  form {
+    background: #a0d8ff; /* ฟ้าเข้มขึ้นเล็กน้อย */
+    padding: 30px 40px;
+    border-radius: 25px;
+    box-shadow:
+      0 8px 15px rgba(0, 102, 204, 0.3),
+      0 0 0 4px #0569c2; /* outline สีฟ้าเข้ม */
+    max-width: 450px;
+    width: 100%;
+    position: relative;
+  }
+
+  h2 {
+    color: #004d99;
+    text-align: center;
+    font-weight: 900;
+    margin-bottom: 25px;
+    text-shadow: 2px 2px 4px #a0d8ff;
+  }
+
+  label {
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+    font-size: 18px;
+    color: #004d99;
+    margin-top: 20px;
+  }
+
+  /* ใส่ไอคอนหน้ายิ้มข้าง label */
+  label .icon {
+    display: inline-block;
+    font-size: 24px;
+    margin-right: 10px;
+    user-select: none;
+  }
+
+  input[type="text"],
+  input[type="date"],
+  select {
+    width: 100%;
+    padding: 14px 18px;
+    margin-top: 8px;
+    border-radius: 20px;
+    border: 3px solid #0569c2;
+    font-size: 16px;
+    background: #d9f0ff;
+    color: #004d99;
+    box-shadow:
+      inset 2px 2px 6px #a0d8ff,
+      inset -2px -2px 6px #e0f4ff;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+    outline: none;
+    font-family: 'Baloo 2', cursive;
+  }
+
+  input[type="text"]:focus,
+  input[type="date"]:focus,
+  select:focus {
+    background-color: #ffffff;
+    border-color: #003366;
+    box-shadow:
+      0 0 8px 2px #1a75ff;
+  }
+
+  button[type="submit"] {
+    margin-top: 30px;
+    width: 100%;
+    padding: 16px 0;
+    font-size: 20px;
+    font-weight: 900;
+    color: #ffffff;
+    background: linear-gradient(45deg, #3399ff, #0066cc);
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow:
+      0 5px 10px rgba(0, 102, 204, 0.6);
+    transition: background 0.3s ease, transform 0.2s ease;
+    font-family: 'Baloo 2', cursive;
+  }
+
+  button[type="submit"]:hover {
+    background: linear-gradient(45deg, #0073e6, #004d99);
+    transform: translateY(-3px);
+  }
+
+  button[type="submit"]:active {
+    transform: translateY(1px);
+  }
+
+  /* Responsive */
+  @media (max-width: 480px) {
+    form {
+      padding: 20px 25px;
     }
-  </style>
+    label {
+      font-size: 16px;
+    }
+    button[type="submit"] {
+      font-size: 18px;
+    }
+  }
+</style>
 </head>
 <body>
-  <h2>Namtan SHOP</h2>
-  <form id="form">
-    <label>ชื่อ:</label>
-    <input type="text" name="name" required>
 
-    <label>สินค้า:</label>
-    <input type="text" name="product" required>
+<form id="form">
+  <h2><font size=10>Namtan SHOP 😊</font></h2>
 
-    <label>จำนวนสินค้า:</label>
-    <input type="text" name="total_product" required>
+  <label><span class="icon">👤</span> ชื่อ:</label>
+  <input type="text" name="name" required />
 
-    <label>วันที่สั่ง:</label>
-    <input type="date" name="date" required>
+  <label><span class="icon">📦</span> สินค้า:</label>
+  <input type="text" name="product" required />
 
-    <label>สถานะชำระ:</label>
-    <select name="status" required>
-      <option value="">-- เลือกสถานะ --</option>
-      <option value="จ่ายแล้ว">จ่ายแล้ว</option>
-      <option value="สิ้นเดือน">สิ้นเดือน</option>
-    </select>
+  <label><span class="icon">🔢</span> จำนวนสินค้า:</label>
+  <input type="text" name="total_product" required />
 
-    <label>เพิ่มเติม:</label>
-    <input type="text" name="remark">
+  <label><span class="icon">📅</span> วันที่สั่ง:</label>
+  <input type="date" name="date" required />
 
-    <button type="submit">ส่งข้อมูล</button>
-  </form>
+  <label><span class="icon">💰</span> สถานะชำระ:</label>
+  <select name="status" required>
+    <option value="">-- เลือกสถานะ --</option>
+    <option value="จ่ายแล้ว">จ่ายแล้ว</option>
+    <option value="สิ้นเดือน">สิ้นเดือน</option>
+  </select>
 
-  <script>
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbxjwYaJ7_fTM29qjxGbst8c3gPRb67tzmRbcD0p1vNt8SdYFKaCWd_mQcV839i1DFZ0/exec';
-    const form = document.getElementById('form');
+  <label><span class="icon">📝</span> เพิ่มเติม:</label>
+  <input type="text" name="remark" />
 
-    form.addEventListener('submit', e => {
-      e.preventDefault();
+  <button type="submit">ส่งข้อมูล</button>
+</form>
 
-      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-        .then(response => {
-          if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-          return response.text();
-        })
-        .then(text => {
-          alert("✅ ส่งข้อมูลเรียบร้อยแล้ว!");
-          form.reset();
-        })
-        .catch(error => {
-          alert("❌ เกิดข้อผิดพลาด: " + error.message);
-        });
-    });
-  </script>
 </body>
 </html>
