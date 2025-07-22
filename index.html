@@ -34,7 +34,9 @@
       display: block;
     }
 
-    input[type="text"], input[type="date"] {
+    input[type="text"],
+    input[type="date"],
+    select {
       width: 100%;
       padding: 10px;
       margin-top: 6px;
@@ -43,6 +45,7 @@
       border-radius: 8px;
       box-sizing: border-box;
       font-size: 16px;
+      background-color: white;
     }
 
     button[type="submit"] {
@@ -83,8 +86,12 @@
     <label>วันที่สั่ง:</label>
     <input type="date" name="date" required>
 
-    <label>สถานะ:</label>
-    <input type="text" name="status" required>
+    <label>สถานะชำระ:</label>
+    <select name="status" required>
+      <option value="">-- เลือกสถานะ --</option>
+      <option value="จ่ายแล้ว">จ่ายแล้ว</option>
+      <option value="สิ้นเดือน">สิ้นเดือน</option>
+    </select>
 
     <label>เพิ่มเติม:</label>
     <input type="text" name="remark">
