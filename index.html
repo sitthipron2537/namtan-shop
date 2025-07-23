@@ -1,63 +1,243 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Namtan SHOP</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Namtan SHOP</title>
 
-  <!-- ใช้ Google Fonts แบบกลมมน -->
-  <link href="https://fonts.googleapis.com/css2?family=Baloo+2&display=swap" rel="stylesheet" />
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2&display=swap" rel="stylesheet" />
 
-  <!-- ลิงก์ไปยังไฟล์ CSS ภายนอก -->
-  <link rel="stylesheet" href="styles.css" />
+<!-- Animate.css (Bounce animation) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+<style>
+  /* Reset */
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Baloo 2', cursive;
+    background: linear-gradient(135deg, #a0d8ff, #d0f0ff);
+    margin: 0;
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+
+  form {
+    background: #ffffff;
+    padding: 40px 50px;
+    border-radius: 30px;
+    box-shadow:
+      0 10px 20px rgba(3, 57, 119, 0.15),
+      0 6px 6px rgba(3, 57, 119, 0.1);
+    max-width: 480px;
+    width: 100%;
+    position: relative;
+    animation: bounceIn 1s ease;
+    transition: box-shadow 0.3s ease;
+  }
+
+  form:hover {
+    box-shadow:
+      0 15px 25px rgba(3, 57, 119, 0.25),
+      0 10px 10px rgba(3, 57, 119, 0.15);
+  }
+
+  h2 {
+    color: #1e3a8a;
+    font-weight: 900;
+    margin-bottom: 30px;
+    font-size: 2.8rem;
+    text-shadow: 1px 1px 6px #a0d8ff;
+    user-select: none;
+  }
+
+  label {
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+    font-size: 18px;
+    color: #064273;
+    margin-top: 25px;
+    user-select: none;
+  }
+
+  label .icon {
+    font-size: 26px;
+    margin-right: 14px;
+  }
+
+  input[type="text"],
+  input[type="date"],
+  select {
+    width: 100%;
+    padding: 15px 20px;
+    margin-top: 8px;
+    border-radius: 15px;
+    border: 2.5px solid #3399ff;
+    font-size: 17px;
+    background: #e6f0ff;
+    color: #064273;
+    box-shadow:
+      inset 2px 2px 8px #cce4ff,
+      inset -2px -2px 8px #f0fbff;
+    outline: none;
+    font-family: 'Baloo 2', cursive;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+  }
+
+  input[type="text"]:focus,
+  input[type="date"]:focus,
+  select:focus {
+    background-color: #ffffff;
+    border-color: #0073e6;
+    box-shadow: 0 0 10px 3px rgba(51, 153, 255, 0.5);
+  }
+
+  input[readonly] {
+    background-color: #f0f4ff;
+    color: #555a7b;
+    cursor: not-allowed;
+  }
+
+  button[type="submit"] {
+    margin-top: 35px;
+    width: 100%;
+    padding: 18px 0;
+    font-size: 22px;
+    font-weight: 900;
+    color: #fff;
+    background: linear-gradient(45deg, #4a90e2, #0073e6);
+    border: none;
+    border-radius: 35px;
+    cursor: pointer;
+    box-shadow:
+      0 6px 12px rgba(0, 115, 230, 0.6),
+      0 0 12px rgba(74, 144, 226, 0.8);
+    font-family: 'Baloo 2', cursive;
+    transition: background 0.3s ease, transform 0.2s ease;
+  }
+
+  button[type="submit"]:hover {
+    background: linear-gradient(45deg, #357ade, #005bb5);
+    transform: translateY(-4px);
+    box-shadow:
+      0 10px 20px rgba(0, 91, 181, 0.75),
+      0 0 20px rgba(53, 122, 222, 1);
+  }
+
+  button[type="submit"]:active {
+    transform: translateY(1px);
+    box-shadow: 0 6px 12px rgba(0, 115, 230, 0.6);
+  }
+
+  /* Responsive */
+  @media (max-width: 500px) {
+    form {
+      padding: 30px 25px;
+    }
+
+    h2 {
+      font-size: 2.2rem;
+    }
+
+    label {
+      font-size: 16px;
+    }
+
+    input[type="text"],
+    input[type="date"],
+    select {
+      font-size: 15px;
+      padding: 12px 15px;
+    }
+
+    button[type="submit"] {
+      font-size: 18px;
+      padding: 15px 0;
+      border-radius: 28px;
+    }
+  }
+</style>
 </head>
 <body>
-  <form>
-    <h2>ฟอร์มสั่งซื้อสินค้า</h2>
 
-    <label for="product">ชื่อสินค้า:</label>
-    <input type="text" id="product" name="product" required />
+<form id="form" class="animate__animated animate__bounceIn">
+  <h2>Namtan SHOP 🛒😊</h2>
 
-    <label for="quantity">จำนวน:</label>
-    <input type="text" id="quantity" name="quantity" required />
+  <label><span class="icon">👤</span> ชื่อ:</label>
+  <input type="text" name="name" required>
 
-    <label for="price">ราคา:</label>
-    <input type="text" id="price" name="price" required />
+  <label><span class="icon">📦</span> สินค้า:</label>
+  <input type="text" name="product" required>
 
-    <label for="cost">ต้นทุน:</label>
-    <input type="text" id="cost" name="cost" required />
+  <label><span class="icon">🔢</span> จำนวนสินค้า:</label>
+  <input type="text" name="total_product" required>
 
-    <label for="profit">กำไร:</label>
-    <input type="text" id="profit" name="profit" readonly />
+  <label><span class="icon">📅</span> วันที่สั่ง:</label>
+  <input type="date" name="date" required>
 
-    <label for="date">วันที่สั่งซื้อ:</label>
-    <input type="date" id="date" name="date" required />
+  <label><span class="icon">💰</span> สถานะชำระ:</label>
+  <select name="status" required>
+    <option value="">-- เลือกสถานะ --</option>
+    <option value="จ่ายแล้ว">จ่ายแล้ว</option>
+    <option value="สิ้นเดือน">สิ้นเดือน</option>
+  </select>
 
-    <label for="status">สถานะชำระ:</label>
-    <select name="status" id="status" required>
-      <option value="">-- เลือกสถานะ --</option>
-      <option value="จ่ายแล้ว">จ่ายแล้ว</option>
-      <option value="ยังไม่จ่าย">ยังไม่จ่าย</option>
-    </select>
+  <label><span class="icon">💸</span> ราคาขาย:</label>
+  <input type="text" name="price" id="price" required>
 
-    <button type="submit">ส่งคำสั่งซื้อ</button>
-  </form>
+  <label><span class="icon">🧾</span> ต้นทุน:</label>
+  <input type="text" name="cost" id="cost" required>
 
-  <!-- เพิ่ม script เพื่อคำนวณกำไร -->
-  <script>
-    const priceInput = document.getElementById('price');
-    const costInput = document.getElementById('cost');
-    const profitInput = document.getElementById('profit');
+  <label><span class="icon">📈</span> กำไร:</label>
+  <input type="text" name="profit" id="profit" readonly>
 
-    priceInput.addEventListener('input', updateProfit);
-    costInput.addEventListener('input', updateProfit);
+  <label><span class="icon">📝</span> เพิ่มเติม:</label>
+  <input type="text" name="remark">
 
-    function updateProfit() {
-      const price = parseFloat(priceInput.value) || 0;
-      const cost = parseFloat(costInput.value) || 0;
-      const profit = price - cost;
-      profitInput.value = profit.toFixed(2);
-    }
-  </script>
+  <button type="submit">ส่งข้อมูล</button>
+</form>
+
+<script>
+  const form = document.getElementById('form');
+  const priceInput = document.getElementById('price');
+  const costInput = document.getElementById('cost');
+  const profitInput = document.getElementById('profit');
+
+  function calculateProfit() {
+    const price = parseFloat(priceInput.value) || 0;
+    const cost = parseFloat(costInput.value) || 0;
+    const profit = price - cost;
+    profitInput.value = profit.toFixed(2);
+  }
+
+  priceInput.addEventListener('input', calculateProfit);
+  costInput.addEventListener('input', calculateProfit);
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+    const data = new URLSearchParams(formData);
+
+    fetch('https://script.google.com/macros/s/AKfycbwPNMdREA1TesyE5V91_iqFtZ_orCrEB5TzrxySHETgPcr9XWtLhkN7pdIXse2nPTg/exec', {
+      method: 'POST',
+      body: data
+    })
+    .then(res => res.text())
+    .then(response => {
+      alert("✅ ส่งข้อมูลเรียบร้อยแล้ว: " + response);
+      form.reset();
+    })
+    .catch(err => alert("❌ เกิดข้อผิดพลาด: " + err.message));
+  });
+</script>
+
 </body>
 </html>
