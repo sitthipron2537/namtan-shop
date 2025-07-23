@@ -1,3 +1,5 @@
+galaxxy
+
 <!DOCTYPE html>
 <html lang="th">
 <head>
@@ -34,43 +36,6 @@
       height: 100%;
       z-index: -1;
     }
-    .floating-orb {
-      position: absolute;
-      border-radius: 50%;
-      background: radial-gradient(circle at 30% 30%, #ffffff88, #ffffff22);
-      backdrop-filter: blur(10px);
-      animation: float 8s ease-in-out infinite;
-      z-index: -2;
-    }
-    .orb1 { width: 100px; height: 100px; top: 10%; left: 15%; animation-delay: 0s; }
-    .orb2 { width: 60px; height: 60px; bottom: 20%; right: 10%; animation-delay: 2s; }
-    .orb3 { width: 80px; height: 80px; top: 40%; right: 20%; animation-delay: 4s; }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-30px); }
-    }
-
-    body::before {
-      content: '';
-      position: fixed;
-      top: -20%;
-      left: -20%;
-      width: 150%;
-      height: 150%;
-      background: radial-gradient(circle at 30% 30%, #ff00cc, transparent 40%),
-                  radial-gradient(circle at 70% 70%, #00eaff, transparent 40%),
-                  radial-gradient(circle at 50% 50%, #ffffff22, transparent 50%);
-      z-index: -3;
-      animation: bgmove 10s ease-in-out infinite;
-      filter: blur(120px);
-      opacity: 0.7;
-    }
-    @keyframes bgmove {
-      0%, 100% { transform: scale(1) translate(0, 0); }
-      50% { transform: scale(1.05) translate(20px, 20px); }
-    }
-
     form {
       background: rgba(10, 10, 30, 0.9);
       padding: 40px;
@@ -85,8 +50,8 @@
     h2 {
       text-align: center;
       font-size: 36px;
-      color: #e3a1ff;
-      text-shadow: 0 0 20px #ff00ff;
+      color: #9efeff;
+      text-shadow: 0 0 20px #00f0ff;
     }
     label {
       display: flex;
@@ -162,7 +127,142 @@
   </style>
 </head>
 <body>
+
 <div id="particles-js"></div>
-<div class="floating-orb orb1"></div>
-<div class="floating-orb orb2"></div>
-<div class="floating-orb orb3"></div>
+
+<form id="form" class="animate__animated animate__fadeInDown">
+  <h2>Namtan <br>SH😊P</h2>
+
+  <label><span class="icon">👤</span> ชื่อ:</label>
+  <input type="text" name="name" required>
+
+  <label><span class="icon">📦</span> สินค้า:</label>
+  <select name="product" required>
+    <option value="">--เลือก--</option>
+    <option value="สครับขนม">สครับขนม</option>
+    <option value="ยาลดสูตรลับ">ยาลดสูตรลับ</option>
+    <option value="ทรีทเม้นซีเอ็ม">ทรีทเม้นซีเอ็ม</option>
+    <option value="ฟิตไฟเบอร์">ฟิตไฟเบอร์</option>
+    <option value="มาส์กทองคำ">มาส์กทองคำ</option>
+    <option value="มาส์กเรยา">มาส์กเรยา</option>
+    <option value="มอยซ์ฮิวเมค">มอยซ์ฮิวเมค</option>
+    <option value="ครีมวิตามินพี่เกรฟ">ครีมวิตามินพี่เกรฟ</option>
+    <option value="เซรั่มสตอ">เซรั่มสตอ</option>
+  </select>
+
+  <label><span class="icon">🔢</span> จำนวนสินค้า:</label>
+ <input type="number" name="total_product" id="total_product" required>
+
+  <label><span class="icon">📅</span> วันที่สั่ง:</label>
+  <input type="date" name="date" required>
+
+  <label><span class="icon">💰</span> สถานะชำระ:</label>
+  <select name="status" required>
+    <option value="">-- เลือกสถานะ --</option>
+    <option value="จ่ายแล้ว">จ่ายแล้ว</option>
+    <option value="สิ้นเดือน">สิ้นเดือน</option>
+  </select>
+
+  <label><span class="icon">💸</span> ราคาขาย:</label>
+<input type="number" name="price" id="price" required>
+
+<label><span class="icon">🧾</span> ต้นทุน:</label>
+<input type="number" name="cost" id="cost" required>
+
+  <label><span class="icon">📊</span> กำไร:</label>
+  <input type="text" name="profit" id="profit" readonly>
+
+  <label><span class="icon">📝</span> เพิ่มเติม:</label>
+  <input type="text" name="remark">
+
+  <button type="submit">SAVE</button>
+
+  <div id="loadingSpinner">
+    <div class="loader"></div>
+    <p>SAVE...</p>
+  </div>
+</form>
+
+<!-- Sound Effect -->
+<audio id="submitSound" src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_604ee8cd91.mp3?filename=success-1-6297.mp3"></audio>
+
+<script>
+  const form = document.getElementById('form');
+  const priceInput = document.getElementById('price');
+  const costInput = document.getElementById('cost');
+  const profitInput = document.getElementById('profit');
+  const sound = document.getElementById('submitSound');
+
+  function calculateProfit() {
+    const price = parseFloat(priceInput.value) || 0;
+    const cost = parseFloat(costInput.value) || 0;
+    const profit = price - cost;
+    profitInput.value = profit.toFixed(2);
+  }
+
+  priceInput.addEventListener('input', calculateProfit);
+  costInput.addEventListener('input', calculateProfit);
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+    const data = new URLSearchParams(formData);
+
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const loadingSpinner = document.getElementById('loadingSpinner');
+
+    loadingSpinner.style.display = 'block';
+    submitBtn.disabled = true;
+    submitBtn.textContent = "SAVE...";
+
+    fetch('https://script.google.com/macros/s/AKfycbwPNMdREA1TesyE5V91_iqFtZ_orCrEB5TzrxySHETgPcr9XWtLhkN7pdIXse2nPTg/exec', {
+      method: 'POST',
+      body: data
+    })
+    .then(res => res.text())
+    .then(response => {
+      alert("✅ ส่งข้อมูลเรียบร้อยแล้ว: " + response);
+      form.reset();
+      profitInput.value = ''; // reset กำไร
+      sound.play();  // เล่นเสียง
+    })
+    .catch(err => {
+      alert("❌ เกิดข้อผิดพลาด: " + err.message);
+    })
+    .finally(() => {
+      loadingSpinner.style.display = 'none';
+      submitBtn.disabled = false;
+      submitBtn.textContent = "SAVE";
+    });
+  });
+
+  // particles.js config
+  particlesJS("particles-js", {
+    "particles": {
+      "number": { "value": 120, "density": { "enable": true, "value_area": 800 } },
+      "color": { "value": "#ffffff" },
+      "shape": { "type": "circle" },
+      "opacity": { "value": 0.6, "random": true },
+      "size": { "value": 2, "random": true },
+      "move": {
+        "enable": true, "speed": 1,
+        "direction": "none", "out_mode": "out"
+      }
+    },
+    "interactivity": {
+      "events": {
+        "onhover": { "enable": true, "mode": "repulse" },
+        "onclick": { "enable": true, "mode": "push" }
+      },
+      "modes": {
+        "repulse": { "distance": 100, "duration": 0.4 },
+        "push": { "particles_nb": 4 }
+      }
+    },
+    "retina_detect": true
+  });
+</script>
+
+</body>
+</html>
