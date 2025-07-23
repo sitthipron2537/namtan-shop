@@ -1,4 +1,4 @@
-เวลาเรากดปุ่ม"ส่งข้อมูล" ทำให้ขึ้นเครื่องหมายหมุนโหลด🔃 ได้ไหม\\  <!DOCTYPE html> 
+<!DOCTYPE html> 
 <html lang="th">
 <head>
 <meta charset="UTF-8" />
@@ -6,7 +6,7 @@
 <title>Namtan SHOP</title>
 
 <!-- Google Font -->
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2&display=swap" rel="stylesheet" />
+<link href="https://https://fonts.googleapis.com/css?family=Rancho&effect=shadow-multiple" rel="stylesheet" />
 
 <!-- Animate.css (Bounce animation) -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
@@ -168,13 +168,25 @@
 <body>
 
 <form id="form" class="animate__animated animate__bounceIn">
-  <h2>Namtan SHOP 🛒😊</h2>
+  <h2 style="font-size: 40px;"> Namtan SH😊P</h2>
 
   <label><span class="icon">👤</span> ชื่อ:</label>
   <input type="text" name="name" required>
 
   <label><span class="icon">📦</span> สินค้า:</label>
-  <input type="text" name="product" required>
+  <select name="product" required>
+    <option value="">--เลือก--</option>
+    <option value="สครับขนม">สครับขนม</option>
+    <option value="ยาลดสูตรลับ">ยาลดสูตรลับ</option>
+    <option value="ทรีทเม้นซีเอ็ม">ทรีทเม้นซีเอ็ม</option>
+    <option value="ฟิตไฟเบอร์">ฟิตไฟเบอร์</option>
+    <option value="มาส์กทองคำ">มาส์กทองคำ</option>
+    <option value="มาส์กเรยา">มาส์กเรยา</option>
+    <option value="มอยซ์ฮิวเมค">มอยซ์ฮิวเมค</option>
+    <option value="ครีมวิตามินพี่เกรฟ">ครีมวิตามินพี่เกรฟ</option>
+    <option value="เซรั่มสตอ">เซรั่มสตอ</option>
+  </select>
+  
 
   <label><span class="icon">🔢</span> จำนวนสินค้า:</label>
   <input type="text" name="total_product" required>
