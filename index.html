@@ -1,197 +1,150 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="th">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Namtan SHOP</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Namtan Galaxy SHOP</title>
 
-<!-- Google Font -->
-<link href="https://https://fonts.googleapis.com/css?family=Rancho&effect=shadow-multiple" rel="stylesheet" />
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet">
+  <!-- Animate.css -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <!-- particles.js -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 
-<!-- Animate.css (Bounce animation) -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-<style>
-  /* Reset */
-  * {
-    box-sizing: border-box;
-  }
+    body {
+      margin: 0;
+      font-family: 'Orbitron', sans-serif;
+      background-color: #000010;
+      overflow: hidden;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 20px;
+      position: relative;
+      color: #fff;
+    }
 
-#loadingSpinner {
-  display: none;
-  margin-top: 20px;
-  text-align: center;
-}
+    #particles-js {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
 
-.loader {
-  border: 6px solid #e6f0ff;
-  border-top: 6px solid #0073e6;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  animation: spin 1s linear infinite;
-  margin: 0 auto;
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-
-  
-  body {
-    font-family: 'Baloo 2', cursive;
-    background: linear-gradient(135deg, #a0d8ff, #d0f0ff);
-    margin: 0;
-    padding: 40px 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-  }
-
-  form {
-    background: #ffffff;
-    padding: 40px 50px;
-    border-radius: 30px;
-    box-shadow:
-      0 10px 20px rgba(3, 57, 119, 0.15),
-      0 6px 6px rgba(3, 57, 119, 0.1);
-    max-width: 480px;
-    width: 100%;
-    position: relative;
-    animation: bounceIn 1s ease;
-    transition: box-shadow 0.3s ease;
-  }
-
-  form:hover {
-    box-shadow:
-      0 15px 25px rgba(3, 57, 119, 0.25),
-      0 10px 10px rgba(3, 57, 119, 0.15);
-  }
-
-  h2 {
-    color: #1e3a8a;
-    font-weight: 900;
-    margin-bottom: 30px;
-    font-size: 2.8rem;
-    text-shadow: 1px 1px 6px #a0d8ff;
-    user-select: none;
-  }
-
-  label {
-    display: flex;
-    align-items: center;
-    font-weight: 700;
-    font-size: 18px;
-    color: #064273;
-    margin-top: 25px;
-    user-select: none;
-  }
-
-  label .icon {
-    font-size: 26px;
-    margin-right: 14px;
-  }
-
-  input[type="text"],
-  input[type="date"],
-  select {
-    width: 100%;
-    padding: 15px 20px;
-    margin-top: 8px;
-    border-radius: 15px;
-    border: 2.5px solid #3399ff;
-    font-size: 17px;
-    background: #e6f0ff;
-    color: #064273;
-    box-shadow:
-      inset 2px 2px 8px #cce4ff,
-      inset -2px -2px 8px #f0fbff;
-    outline: none;
-    font-family: 'Baloo 2', cursive;
-    transition: border-color 0.3s ease, background-color 0.3s ease;
-  }
-
-  input[type="text"]:focus,
-  input[type="date"]:focus,
-  select:focus {
-    background-color: #ffffff;
-    border-color: #0073e6;
-    box-shadow: 0 0 10px 3px rgba(51, 153, 255, 0.5);
-  }
-
-  input[readonly] {
-    background-color: #f0f4ff;
-    color: #555a7b;
-    cursor: not-allowed;
-  }
-
-  button[type="submit"] {
-    margin-top: 35px;
-    width: 100%;
-    padding: 18px 0;
-    font-size: 22px;
-    font-weight: 900;
-    color: #fff;
-    background: linear-gradient(45deg, #4a90e2, #0073e6);
-    border: none;
-    border-radius: 35px;
-    cursor: pointer;
-    box-shadow:
-      0 6px 12px rgba(0, 115, 230, 0.6),
-      0 0 12px rgba(74, 144, 226, 0.8);
-    font-family: 'Baloo 2', cursive;
-    transition: background 0.3s ease, transform 0.2s ease;
-  }
-
-  button[type="submit"]:hover {
-    background: linear-gradient(45deg, #357ade, #005bb5);
-    transform: translateY(-4px);
-    box-shadow:
-      0 10px 20px rgba(0, 91, 181, 0.75),
-      0 0 20px rgba(53, 122, 222, 1);
-  }
-
-  button[type="submit"]:active {
-    transform: translateY(1px);
-    box-shadow: 0 6px 12px rgba(0, 115, 230, 0.6);
-  }
-
-  /* Responsive */
-  @media (max-width: 500px) {
     form {
-      padding: 30px 25px;
+      background: rgba(10, 10, 30, 0.9);
+      padding: 40px;
+      border-radius: 30px;
+      box-shadow: 0 0 40px rgba(173, 216, 230, 0.25),
+                  0 0 60px rgba(0, 255, 255, 0.2) inset;
+      max-width: 500px;
+      width: 100%;
+      animation: animate__fadeInDown 1s ease;
+      backdrop-filter: blur(10px);
     }
 
     h2 {
-      font-size: 2.2rem;
+      text-align: center;
+      font-size: 36px;
+      color: #9efeff;
+      text-shadow: 0 0 20px #00f0ff;
     }
 
     label {
+      display: flex;
+      align-items: center;
+      margin-top: 20px;
       font-size: 16px;
+    }
+
+    .icon {
+      margin-right: 10px;
+      font-size: 22px;
     }
 
     input[type="text"],
     input[type="date"],
     select {
-      font-size: 15px;
-      padding: 12px 15px;
+      width: 100%;
+      padding: 14px 18px;
+      margin-top: 8px;
+      border-radius: 12px;
+      border: 2px solid #00e0ff;
+      background: #1b1f2a;
+      color: #e0f7ff;
+      font-size: 16px;
+      transition: 0.3s ease;
+      box-shadow: inset 0 0 10px #00f0ff;
+    }
+
+    input:focus, select:focus {
+      border-color: #66ffff;
+      background: #242c3b;
+      box-shadow: 0 0 10px #00f0ff;
+    }
+
+    input[readonly] {
+      background-color: #2b2f3e;
+      color: #aaa;
     }
 
     button[type="submit"] {
+      width: 100%;
+      margin-top: 30px;
+      padding: 16px;
       font-size: 18px;
-      padding: 15px 0;
-      border-radius: 28px;
+      font-weight: bold;
+      color: #fff;
+      background: linear-gradient(45deg, #00e0ff, #002f4b);
+      border: none;
+      border-radius: 30px;
+      box-shadow: 0 0 15px #00f0ff, 0 0 25px #0077ff inset;
+      cursor: pointer;
+      transition: 0.4s ease;
     }
-  }
-</style>
+
+    button[type="submit"]:hover {
+      transform: scale(1.05);
+      background: linear-gradient(45deg, #00f0ff, #004466);
+      box-shadow: 0 0 30px #66f0ff, 0 0 30px #00e0ff inset;
+    }
+
+    #loadingSpinner {
+      display: none;
+      text-align: center;
+      margin-top: 20px;
+      color: #66ffff;
+    }
+
+    .loader {
+      border: 5px solid #133b50;
+      border-top: 5px solid #00e0ff;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      margin: 0 auto;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+  </style>
 </head>
 <body>
 
-<form id="form" class="animate__animated animate__bounceIn">
-  <h2 style="font-size: 40px;"> Namtan SH😊P</h2>
+<div id="particles-js"></div>
+
+<form id="form" class="animate__animated animate__fadeInDown">
+  <h2>Namtan SH😊P </h2>
 
   <label><span class="icon">👤</span> ชื่อ:</label>
   <input type="text" name="name" required>
@@ -209,7 +162,6 @@
     <option value="ครีมวิตามินพี่เกรฟ">ครีมวิตามินพี่เกรฟ</option>
     <option value="เซรั่มสตอ">เซรั่มสตอ</option>
   </select>
-  
 
   <label><span class="icon">🔢</span> จำนวนสินค้า:</label>
   <input type="text" name="total_product" required>
@@ -236,21 +188,23 @@
   <label><span class="icon">📝</span> เพิ่มเติม:</label>
   <input type="text" name="remark">
 
-  <button type="submit">ส่งข้อมูล</button>
-  
-<div id="loadingSpinner">
-  <div class="loader"></div>
-  <p>กำลังส่งข้อมูล...</p>
-</div>
+  <button type="submit">🚀 ส่งข้อมูล</button>
 
-  
+  <div id="loadingSpinner">
+    <div class="loader"></div>
+    <p>กำลังส่งข้อมูล...</p>
+  </div>
 </form>
+
+<!-- Sound Effect -->
+<audio id="submitSound" src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_604ee8cd91.mp3?filename=success-1-6297.mp3"></audio>
 
 <script>
   const form = document.getElementById('form');
   const priceInput = document.getElementById('price');
   const costInput = document.getElementById('cost');
   const profitInput = document.getElementById('profit');
+  const sound = document.getElementById('submitSound');
 
   function calculateProfit() {
     const price = parseFloat(priceInput.value) || 0;
@@ -263,39 +217,72 @@
   costInput.addEventListener('input', calculateProfit);
 
   form.addEventListener('submit', function (e) {
-  e.preventDefault();
+    e.preventDefault();
 
-  const formData = new FormData(form);
-  const data = new URLSearchParams(formData);
-  
-  const submitBtn = form.querySelector('button[type="submit"]');
-  const loadingSpinner = document.getElementById('loadingSpinner');
+    const formData = new FormData(form);
+    const data = new URLSearchParams(formData);
 
-  // แสดง loading + ปิดปุ่ม
-  loadingSpinner.style.display = 'block';
-  submitBtn.disabled = true;
-  submitBtn.textContent = "กำลังส่ง...";
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const loadingSpinner = document.getElementById('loadingSpinner');
 
-  fetch('https://script.google.com/macros/s/AKfycbwPNMdREA1TesyE5V91_iqFtZ_orCrEB5TzrxySHETgPcr9XWtLhkN7pdIXse2nPTg/exec', {
-    method: 'POST',
-    body: data
-  })
-  .then(res => res.text())
-  .then(response => {
-    alert("✅ ส่งข้อมูลเรียบร้อยแล้ว: " + response);
-    form.reset();
-  })
-  .catch(err => {
-    alert("❌ เกิดข้อผิดพลาด: " + err.message);
-  })
-  .finally(() => {
-    // ซ่อน loading + เปิดปุ่มกลับ
-    loadingSpinner.style.display = 'none';
-    submitBtn.disabled = false;
-    submitBtn.textContent = "ส่งข้อมูล";
+    loadingSpinner.style.display = 'block';
+    submitBtn.disabled = true;
+    submitBtn.textContent = "🚀 กำลังส่ง...";
+
+    fetch('https://script.google.com/macros/s/AKfycbwPNMdREA1TesyE5V91_iqFtZ_orCrEB5TzrxySHETgPcr9XWtLhkN7pdIXse2nPTg/exec', {
+      method: 'POST',
+      body: data
+    })
+    .then(res => res.text())
+    .then(response => {
+      alert("✅ ส่งข้อมูลเรียบร้อยแล้ว: " + response);
+      form.reset();
+      sound.play();  // 🔊 เล่นเสียง
+    })
+    .catch(err => {
+      alert("❌ เกิดข้อผิดพลาด: " + err.message);
+    })
+    .finally(() => {
+      loadingSpinner.style.display = 'none';
+      submitBtn.disabled = false;
+      submitBtn.textContent = "🚀 ส่งข้อมูล";
+    });
   });
-});
 
+  // particles.js config
+  particlesJS("particles-js", {
+    "particles": {
+      "number": { "value": 120, "density": { "enable": true, "value_area": 800 } },
+      "color": { "value": "#ffffff" },
+      "shape": { "type": "circle" },
+      "opacity": {
+        "value": 0.6,
+        "random": true,
+        "anim": { "enable": false }
+      },
+      "size": {
+        "value": 2,
+        "random": true
+      },
+      "move": {
+        "enable": true,
+        "speed": 1,
+        "direction": "none",
+        "out_mode": "out"
+      }
+    },
+    "interactivity": {
+      "events": {
+        "onhover": { "enable": true, "mode": "repulse" },
+        "onclick": { "enable": true, "mode": "push" }
+      },
+      "modes": {
+        "repulse": { "distance": 100, "duration": 0.4 },
+        "push": { "particles_nb": 4 }
+      }
+    },
+    "retina_detect": true
+  });
 </script>
 
 </body>
