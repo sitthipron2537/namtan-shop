@@ -13,11 +13,13 @@
   <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 
   <style>
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
     body {
       margin: 0;
       font-family: 'Orbitron', sans-serif;
-      background-color: #000010;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
       overflow: hidden;
       min-height: 100vh;
       display: flex;
@@ -35,15 +37,16 @@
       z-index: -1;
     }
     form {
-      background: rgba(10, 10, 30, 0.9);
+      background: rgba(255, 255, 255, 0.05);
       padding: 40px;
-      border-radius: 30px;
-      box-shadow: 0 0 40px rgba(173, 216, 230, 0.25),
-                  0 0 60px rgba(0, 255, 255, 0.2) inset;
+      border-radius: 25px;
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      border: 1px solid rgba(255, 255, 255, 0.18);
       max-width: 500px;
       width: 100%;
       animation: animate__fadeInDown 1s ease;
-      backdrop-filter: blur(10px);
     }
     h2 {
       text-align: center;
@@ -68,21 +71,21 @@
       width: 100%;
       padding: 14px 18px;
       margin-top: 8px;
-      border-radius: 12px;
-      border: 2px solid #00e0ff;
-      background: #1b1f2a;
+      border-radius: 15px;
+      border: none;
+      background: rgba(255, 255, 255, 0.1);
       color: #e0f7ff;
       font-size: 16px;
       transition: 0.3s ease;
-      box-shadow: inset 0 0 10px #00f0ff;
+      box-shadow: inset 0 0 10px rgba(0, 240, 255, 0.3);
     }
     input:focus, select:focus {
-      border-color: #66ffff;
-      background: #242c3b;
-      box-shadow: 0 0 10px #00f0ff;
+      outline: none;
+      background: rgba(255, 255, 255, 0.2);
+      box-shadow: 0 0 15px rgba(0, 240, 255, 0.5);
     }
     input[readonly] {
-      background-color: #2b2f3e;
+      background-color: rgba(255, 255, 255, 0.05);
       color: #aaa;
     }
     button[type="submit"] {
@@ -92,17 +95,17 @@
       font-size: 18px;
       font-weight: bold;
       color: #fff;
-      background: linear-gradient(45deg, #00e0ff, #002f4b);
-      border: none;
-      border-radius: 30px;
-      box-shadow: 0 0 15px #00f0ff, 0 0 25px #0077ff inset;
+      background: rgba(0, 255, 255, 0.2);
+      border: 1px solid rgba(0, 255, 255, 0.4);
+      border-radius: 20px;
+      box-shadow: 0 0 15px rgba(0, 255, 255, 0.3), inset 0 0 25px rgba(0, 255, 255, 0.2);
       cursor: pointer;
-      transition: 0.4s ease;
+      transition: all 0.3s ease-in-out;
     }
     button[type="submit"]:hover {
       transform: scale(1.05);
-      background: linear-gradient(45deg, #00f0ff, #004466);
-      box-shadow: 0 0 30px #66f0ff, 0 0 30px #00e0ff inset;
+      background: rgba(0, 255, 255, 0.4);
+      box-shadow: 0 0 30px rgba(0, 255, 255, 0.6), inset 0 0 30px rgba(0, 255, 255, 0.4);
     }
     #loadingSpinner {
       display: none;
@@ -111,7 +114,7 @@
       color: #66ffff;
     }
     .loader {
-      border: 5px solid #133b50;
+      border: 5px solid rgba(255, 255, 255, 0.1);
       border-top: 5px solid #00e0ff;
       border-radius: 50%;
       width: 40px;
@@ -149,7 +152,7 @@
   </select>
 
   <label><span class="icon">🔢</span> จำนวนสินค้า:</label>
- <input type="number" name="total_product" id="total_product" required>
+  <input type="number" name="total_product" id="total_product" required>
 
   <label><span class="icon">📅</span> วันที่สั่ง:</label>
   <input type="date" name="date" required>
@@ -162,10 +165,10 @@
   </select>
 
   <label><span class="icon">💸</span> ราคาขาย:</label>
-<input type="number" name="price" id="price" required>
+  <input type="number" name="price" id="price" required>
 
-<label><span class="icon">🧾</span> ต้นทุน:</label>
-<input type="number" name="cost" id="cost" required>
+  <label><span class="icon">🧾</span> ต้นทุน:</label>
+  <input type="number" name="cost" id="cost" required>
 
   <label><span class="icon">📊</span> กำไร:</label>
   <input type="text" name="profit" id="profit" readonly>
@@ -222,8 +225,8 @@
     .then(response => {
       alert("✅ ส่งข้อมูลเรียบร้อยแล้ว: " + response);
       form.reset();
-      profitInput.value = ''; // reset กำไร
-      sound.play();  // เล่นเสียง
+      profitInput.value = '';
+      sound.play();
     })
     .catch(err => {
       alert("❌ เกิดข้อผิดพลาด: " + err.message);
@@ -235,7 +238,6 @@
     });
   });
 
-  // particles.js config
   particlesJS("particles-js", {
     "particles": {
       "number": { "value": 120, "density": { "enable": true, "value_area": 800 } },
