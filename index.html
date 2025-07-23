@@ -251,38 +251,38 @@
 
 
   form.addEventListener('submit', function (e) {
-    e.preventDefault();
+  e.preventDefault();
 
-    const formData = new FormData(form);
-    const data = new URLSearchParams(formData);
+  const formData = new FormData(form);
+  const data = new URLSearchParams(formData);
+  
+  const submitBtn = form.querySelector('button[type="submit"]');
+  const loadingSpinner = document.getElementById('loadingSpinner');
 
-    const submitBtn = form.querySelector('button[type="submit"]');
-    const loadingSpinner = document.getElementById('loadingSpinner');
+  // แสดง loading + ปิดปุ่ม
+  loadingSpinner.style.display = 'block';
+  submitBtn.disabled = true;
+  submitBtn.textContent = "กำลังส่ง...";
 
-    // แสดง loading + ปิดปุ่ม
-    loadingSpinner.style.display = 'block';
-    submitBtn.disabled = true;
-    submitBtn.textContent = "กำลังส่ง...";
-
-    fetch('https://script.google.com/macros/s/AKfycbwPNMdREA1TesyE5V91_iqFtZ_orCrEB5TzrxySHETgPcr9XWtLhkN7pdIXse2nPTg/exec', {
-      method: 'POST',
-      body: data
-    })
-    .then(res => res.text())
-    .then(response => {
-      alert("✅ ส่งข้อมูลเรียบร้อยแล้ว: " + response);
-      form.reset();
-    })
-    .catch(err => {
-      alert("❌ เกิดข้อผิดพลาด: " + err.message);
-    })
-    .finally(() => {
-      // หยุด loading + เปิดปุ่ม + เปลี่ยนข้อความปุ่มกลับ
-      loadingSpinner.style.display = 'none';
-      submitBtn.disabled = false;
-      submitBtn.textContent = "ส่งข้อมูล";
-    });
+  fetch('https://script.google.com/macros/s/AKfycbwPNMdREA1TesyE5V91_iqFtZ_orCrEB5TzrxySHETgPcr9XWtLhkN7pdIXse2nPTg/exec', {
+    method: 'POST',
+    body: data
+  })
+  .then(res => res.text())
+  .then(response => {
+    alert("✅ ส่งข้อมูลเรียบร้อยแล้ว: " + response);
+    form.reset();
+  })
+  .catch(err => {
+    alert("❌ เกิดข้อผิดพลาด: " + err.message);
+  })
+  .finally(() => {
+    // ซ่อน loading + เปิดปุ่มกลับ
+    loadingSpinner.style.display = 'none';
+    submitBtn.disabled = false;
+    submitBtn.textContent = "ส่งข้อมูล";
   });
+});
 
 </script>
 
