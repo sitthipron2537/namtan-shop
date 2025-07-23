@@ -12,32 +12,49 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 
 <style>
+  /* Reset */
+  * {
+    box-sizing: border-box;
+  }
+
   body {
     font-family: 'Baloo 2', cursive;
-    background: #d0f0ff;
+    background: linear-gradient(135deg, #a0d8ff, #d0f0ff);
     margin: 0;
     padding: 40px 20px;
     display: flex;
     justify-content: center;
+    align-items: center;
+    min-height: 100vh;
   }
 
   form {
-    background: #a0d8ff;
-    padding: 30px 40px;
-    border-radius: 25px;
-    box-shadow: 0 8px 15px rgba(0, 102, 204, 0.3), 0 0 0 4px #0569c2;
-    max-width: 450px;
+    background: #ffffff;
+    padding: 40px 50px;
+    border-radius: 30px;
+    box-shadow:
+      0 10px 20px rgba(3, 57, 119, 0.15),
+      0 6px 6px rgba(3, 57, 119, 0.1);
+    max-width: 480px;
     width: 100%;
     position: relative;
     animation: bounceIn 1s ease;
+    transition: box-shadow 0.3s ease;
+  }
+
+  form:hover {
+    box-shadow:
+      0 15px 25px rgba(3, 57, 119, 0.25),
+      0 10px 10px rgba(3, 57, 119, 0.15);
   }
 
   h2 {
-    color: #8B4513;
-    text-align: left;
+    color: #1e3a8a;
     font-weight: 900;
-    margin-bottom: 25px;
-    text-shadow: 2px 2px 4px #a0d8ff;
+    margin-bottom: 30px;
+    font-size: 2.8rem;
+    text-shadow: 1px 1px 6px #a0d8ff;
+    user-select: none;
   }
 
   label {
@@ -45,72 +62,105 @@
     align-items: center;
     font-weight: 700;
     font-size: 18px;
-    color: #004d99;
-    margin-top: 20px;
+    color: #064273;
+    margin-top: 25px;
+    user-select: none;
   }
 
   label .icon {
-    font-size: 24px;
-    margin-right: 10px;
+    font-size: 26px;
+    margin-right: 14px;
   }
 
   input[type="text"],
   input[type="date"],
   select {
     width: 100%;
-    padding: 14px 18px;
+    padding: 15px 20px;
     margin-top: 8px;
-    border-radius: 20px;
-    border: 3px solid #0569c2;
-    font-size: 16px;
-    background: #d9f0ff;
-    color: #004d99;
-    box-shadow: inset 2px 2px 6px #a0d8ff, inset -2px -2px 6px #e0f4ff;
+    border-radius: 15px;
+    border: 2.5px solid #3399ff;
+    font-size: 17px;
+    background: #e6f0ff;
+    color: #064273;
+    box-shadow:
+      inset 2px 2px 8px #cce4ff,
+      inset -2px -2px 8px #f0fbff;
     outline: none;
     font-family: 'Baloo 2', cursive;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
   }
 
-  input:focus,
+  input[type="text"]:focus,
+  input[type="date"]:focus,
   select:focus {
     background-color: #ffffff;
-    border-color: #003366;
-    box-shadow: 0 0 8px 2px #1a75ff;
+    border-color: #0073e6;
+    box-shadow: 0 0 10px 3px rgba(51, 153, 255, 0.5);
+  }
+
+  input[readonly] {
+    background-color: #f0f4ff;
+    color: #555a7b;
+    cursor: not-allowed;
   }
 
   button[type="submit"] {
-    margin-top: 30px;
+    margin-top: 35px;
     width: 100%;
-    padding: 16px 0;
-    font-size: 20px;
+    padding: 18px 0;
+    font-size: 22px;
     font-weight: 900;
-    color: #ffffff;
-    background: linear-gradient(45deg, #3399ff, #0066cc);
+    color: #fff;
+    background: linear-gradient(45deg, #4a90e2, #0073e6);
     border: none;
-    border-radius: 30px;
+    border-radius: 35px;
     cursor: pointer;
-    box-shadow: 0 5px 10px rgba(0, 102, 204, 0.6);
+    box-shadow:
+      0 6px 12px rgba(0, 115, 230, 0.6),
+      0 0 12px rgba(74, 144, 226, 0.8);
     font-family: 'Baloo 2', cursive;
     transition: background 0.3s ease, transform 0.2s ease;
   }
 
-  button:hover {
-    background: linear-gradient(45deg, #0073e6, #004d99);
-    transform: translateY(-3px);
+  button[type="submit"]:hover {
+    background: linear-gradient(45deg, #357ade, #005bb5);
+    transform: translateY(-4px);
+    box-shadow:
+      0 10px 20px rgba(0, 91, 181, 0.75),
+      0 0 20px rgba(53, 122, 222, 1);
   }
 
-  button:active {
+  button[type="submit"]:active {
     transform: translateY(1px);
+    box-shadow: 0 6px 12px rgba(0, 115, 230, 0.6);
   }
 
-  @media (max-width: 460px) {
+  /* Responsive */
+  @media (max-width: 500px) {
     form {
-      padding: 20px 25px;
+      padding: 30px 25px;
     }
+
+    h2 {
+      font-size: 2.2rem;
+    }
+
     label {
       font-size: 16px;
     }
-    button {
+
+    input[type="text"],
+    input[type="date"],
+    select {
+      font-size: 15px;
+      padding: 12px 15px;
+    }
+
+    button[type="submit"] {
       font-size: 18px;
+      padding: 15px 0;
+      border-radius: 28px;
     }
   }
 </style>
@@ -118,7 +168,7 @@
 <body>
 
 <form id="form" class="animate__animated animate__bounceIn">
-  <h2><font size="8">Namtan SHOP 🛒😊</font></h2>
+  <h2>Namtan SHOP 🛒😊</h2>
 
   <label><span class="icon">👤</span> ชื่อ:</label>
   <input type="text" name="name" required>
