@@ -176,14 +176,15 @@
     <option value="สิ้นเดือน">สิ้นเดือน</option>
   </select>
 
-  <label><span class="icon">💸</span> ราคาขาย:</label>
-  <input type="number" name="price" min="1" step="1" required>
+  <label><span class="icon">🔢</span> จำนวนสินค้า:</label>
+<input type="number" name="total_product" min="1" step="1" required>
 
-  <label><span class="icon">🧾</span> ต้นทุน:</label>
-  <input type="number" name="cost" min="1" step="1" required>
+<label><span class="icon">💸</span> ราคาขาย:</label>
+<input type="number" name="price" id="price" min="1" step="1" required>
 
-  <label><span class="icon">📈</span> กำไร:</label>
-  <input type="text" name="profit" id="profit" readonly>
+<label><span class="icon">🧾</span> ต้นทุน:</label>
+<input type="number" name="cost" id="cost" min="1" step="1" required>
+
 
   <label><span class="icon">📝</span> เพิ่มเติม:</label>
   <input type="text" name="remark">
@@ -202,19 +203,19 @@
 <script>
   const form = document.getElementById('form');
   const priceInput = document.getElementById('price');
-  const costInput = document.getElementById('cost');
-  const profitInput = document.getElementById('profit');
+const costInput = document.getElementById('cost');
+const profitInput = document.getElementById('profit');
   const sound = document.getElementById('submitSound');
 
   function calculateProfit() {
-    const price = parseFloat(priceInput.value) || 0;
-    const cost = parseFloat(costInput.value) || 0;
-    const profit = price - cost;
-    profitInput.value = profit.toFixed(2);
-  }
+  const price = parseFloat(priceInput.value) || 0;
+  const cost = parseFloat(costInput.value) || 0;
+  const profit = price - cost;
+  profitInput.value = profit.toFixed(2);
+}
 
-  priceInput.addEventListener('input', calculateProfit);
-  costInput.addEventListener('input', calculateProfit);
+priceInput.addEventListener('input', calculateProfit);
+costInput.addEventListener('input', calculateProfit);
 
   form.addEventListener('submit', function (e) {
     e.preventDefault();
