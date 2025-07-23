@@ -21,6 +21,15 @@
     <label for="quantity">จำนวน:</label>
     <input type="text" id="quantity" name="quantity" required />
 
+    <label for="price">ราคา:</label>
+    <input type="text" id="price" name="price" required />
+
+    <label for="cost">ต้นทุน:</label>
+    <input type="text" id="cost" name="cost" required />
+
+    <label for="profit">กำไร:</label>
+    <input type="text" id="profit" name="profit" readonly />
+
     <label for="date">วันที่สั่งซื้อ:</label>
     <input type="date" id="date" name="date" required />
 
@@ -33,5 +42,22 @@
 
     <button type="submit">ส่งคำสั่งซื้อ</button>
   </form>
+
+  <!-- เพิ่ม script เพื่อคำนวณกำไร -->
+  <script>
+    const priceInput = document.getElementById('price');
+    const costInput = document.getElementById('cost');
+    const profitInput = document.getElementById('profit');
+
+    priceInput.addEventListener('input', updateProfit);
+    costInput.addEventListener('input', updateProfit);
+
+    function updateProfit() {
+      const price = parseFloat(priceInput.value) || 0;
+      const cost = parseFloat(costInput.value) || 0;
+      const profit = price - cost;
+      profitInput.value = profit.toFixed(2);
+    }
+  </script>
 </body>
 </html>
