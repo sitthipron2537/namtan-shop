@@ -144,7 +144,7 @@
 <div id="particles-js"></div>
 
 <form id="form" class="animate__animated animate__fadeInDown">
-  <h2>Namtan SH😊P </h2>
+  <h2>Namtan <br>SH😊P </h2>
 
   <label><span class="icon">👤</span> ชื่อ:</label>
   <input type="text" name="name" required>
@@ -164,7 +164,7 @@
   </select>
 
   <label><span class="icon">🔢</span> จำนวนสินค้า:</label>
-  <input type="text" name="total_product" required>
+  <input type="number" name="total_product" min="1" step="1" required>
 
   <label><span class="icon">📅</span> วันที่สั่ง:</label>
   <input type="date" name="date" required>
@@ -177,10 +177,10 @@
   </select>
 
   <label><span class="icon">💸</span> ราคาขาย:</label>
-  <input type="text" name="price" id="price" required>
+  <input type="number" name="total_product" min="1" step="1" required>
 
   <label><span class="icon">🧾</span> ต้นทุน:</label>
-  <input type="text" name="cost" id="cost" required>
+  <input type="number" name="total_product" min="1" step="1" required>
 
   <label><span class="icon">📈</span> กำไร:</label>
   <input type="text" name="profit" id="profit" readonly>
@@ -188,11 +188,11 @@
   <label><span class="icon">📝</span> เพิ่มเติม:</label>
   <input type="text" name="remark">
 
-  <button type="submit">🚀 ส่งข้อมูล</button>
+  <button type="submit">SAVE</button>
 
   <div id="loadingSpinner">
     <div class="loader"></div>
-    <p>กำลังส่งข้อมูล...</p>
+    <p>SAVE...</p>
   </div>
 </form>
 
@@ -227,7 +227,7 @@
 
     loadingSpinner.style.display = 'block';
     submitBtn.disabled = true;
-    submitBtn.textContent = "🚀 กำลังส่ง...";
+    submitBtn.textContent = "SAVE...";
 
     fetch('https://script.google.com/macros/s/AKfycbwPNMdREA1TesyE5V91_iqFtZ_orCrEB5TzrxySHETgPcr9XWtLhkN7pdIXse2nPTg/exec', {
       method: 'POST',
@@ -245,7 +245,7 @@
     .finally(() => {
       loadingSpinner.style.display = 'none';
       submitBtn.disabled = false;
-      submitBtn.textContent = "🚀 ส่งข้อมูล";
+      submitBtn.textContent = "SAVE";
     });
   });
 
