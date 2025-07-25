@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="th">
 <head>
@@ -8,113 +6,98 @@
   <title>Namtan SHOP</title>
 
   <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet">
-  <!-- Animate.css -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-  <!-- particles.js -->
-  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500&display=swap" rel="stylesheet">
 
   <style>
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
     body {
       margin: 0;
-      font-family: 'Orbitron', sans-serif;
-      background-color: #000010;
-      overflow: hidden;
+      font-family: 'Fredoka', sans-serif;
+      background-color: #e6d6f5;
+      background-image: url('https://i.imgur.com/K8g1b8O.png'); /* พื้นหลังลายดอกไม้ */
+      background-repeat: repeat;
+      background-size: 120px;
       min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
       padding: 40px 20px;
-      position: relative;
-      color: #fff;
-    }
-    #particles-js {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
+      color: #333;
     }
     form {
-      background: rgba(10, 10, 30, 0.9);
+      background: #fdf6ff;
       padding: 40px;
       border-radius: 30px;
-      box-shadow: 0 0 40px rgba(173, 216, 230, 0.25),
-                  0 0 60px rgba(0, 255, 255, 0.2) inset;
+      box-shadow: 0 0 20px rgba(153, 102, 204, 0.3);
       max-width: 500px;
       width: 100%;
-      animation: animate__fadeInDown 1s ease;
-      backdrop-filter: blur(10px);
     }
     h2 {
       text-align: center;
-      font-size: 36px;
-      color: #9efeff;
-      text-shadow: 0 0 20px #00f0ff;
+      font-size: 32px;
+      color: #a564c7;
+      margin-bottom: 30px;
     }
     label {
-      display: flex;
-      align-items: center;
-      margin-top: 20px;
+      display: block;
+      margin-top: 15px;
       font-size: 16px;
+      color: #4a2e6f;
     }
     .icon {
-      margin-right: 10px;
-      font-size: 22px;
+      margin-right: 8px;
     }
     input[type="text"],
     input[type="number"],
     input[type="date"],
     select {
       width: 100%;
-      padding: 14px 18px;
-      margin-top: 8px;
-      border-radius: 12px;
-      border: 2px solid #00e0ff;
-      background: #1b1f2a;
-      color: #e0f7ff;
+      padding: 12px 16px;
+      margin-top: 6px;
+      border-radius: 15px;
+      border: 2px solid #d0b5f0;
+      background: #ffffff;
+      color: #3c2160;
       font-size: 16px;
-      transition: 0.3s ease;
-      box-shadow: inset 0 0 10px #00f0ff;
+      transition: border 0.3s;
     }
     input:focus, select:focus {
-      border-color: #66ffff;
-      background: #242c3b;
-      box-shadow: 0 0 10px #00f0ff;
+      border-color: #b86eff;
+      outline: none;
     }
     input[readonly] {
-      background-color: #2b2f3e;
-      color: #aaa;
+      background-color: #f2e6ff;
+      color: #8d7ea5;
     }
     button[type="submit"] {
       width: 100%;
-      margin-top: 30px;
-      padding: 16px;
+      margin-top: 25px;
+      padding: 14px;
       font-size: 18px;
       font-weight: bold;
-      color: #fff;
-      background: linear-gradient(45deg, #00e0ff, #002f4b);
+      color: white;
+      background: linear-gradient(45deg, #c88fff, #a768e4);
       border: none;
       border-radius: 30px;
-      box-shadow: 0 0 15px #00f0ff, 0 0 25px #0077ff inset;
+      box-shadow: 0 5px 15px rgba(160, 90, 240, 0.4);
       cursor: pointer;
-      transition: 0.4s ease;
+      transition: 0.3s;
     }
     button[type="submit"]:hover {
       transform: scale(1.05);
-      background: linear-gradient(45deg, #00f0ff, #004466);
-      box-shadow: 0 0 30px #66f0ff, 0 0 30px #00e0ff inset;
+      background: linear-gradient(45deg, #d89bff, #b072f0);
     }
     #loadingSpinner {
       display: none;
       text-align: center;
       margin-top: 20px;
-      color: #66ffff;
+      color: #a768e4;
     }
     .loader {
-      border: 5px solid #133b50;
-      border-top: 5px solid #00e0ff;
+      border: 5px solid #f0d9ff;
+      border-top: 5px solid #c88fff;
       border-radius: 50%;
       width: 40px;
       height: 40px;
@@ -128,10 +111,8 @@
 </head>
 <body>
 
-<div id="particles-js"></div>
-
-<form id="form" class="animate__animated animate__fadeInDown">
-  <h2>Namtan <br>SH😊P</h2>
+<form id="form">
+  <h2>Namtan <br>SH😊Shop</h2>
 
   <label><span class="icon">👤</span> ชื่อลูกค้า:</label>
   <input type="text" name="name" required>
@@ -151,7 +132,7 @@
   </select>
 
   <label><span class="icon">🔢</span> จำนวนสินค้าที่สั่ง:</label>
- <input type="number" name="total_product" id="total_product" required>
+  <input type="number" name="total_product" id="total_product" required>
 
   <label><span class="icon">📅</span> วันที่สั่ง:</label>
   <input type="date" name="date" required>
@@ -164,10 +145,10 @@
   </select>
 
   <label><span class="icon">💸</span> ราคาขาย:</label>
-<input type="number" name="price" id="price" required>
+  <input type="number" name="price" id="price" required>
 
-<label><span class="icon">🧾</span> ต้นทุน:</label>
-<input type="number" name="cost" id="cost" required>
+  <label><span class="icon">🧾</span> ต้นทุน:</label>
+  <input type="number" name="cost" id="cost" required>
 
   <label><span class="icon">📊</span> กำไร:</label>
   <input type="text" name="profit" id="profit" readonly>
@@ -183,15 +164,11 @@
   </div>
 </form>
 
-<!-- Sound Effect -->
-<audio id="submitSound" src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_604ee8cd91.mp3?filename=success-1-6297.mp3"></audio>
-
 <script>
   const form = document.getElementById('form');
   const priceInput = document.getElementById('price');
   const costInput = document.getElementById('cost');
   const profitInput = document.getElementById('profit');
-  const sound = document.getElementById('submitSound');
 
   function calculateProfit() {
     const price = parseFloat(priceInput.value) || 0;
@@ -205,13 +182,10 @@
 
   form.addEventListener('submit', function (e) {
     e.preventDefault();
-
     const formData = new FormData(form);
     const data = new URLSearchParams(formData);
-
     const submitBtn = form.querySelector('button[type="submit"]');
     const loadingSpinner = document.getElementById('loadingSpinner');
-
     loadingSpinner.style.display = 'block';
     submitBtn.disabled = true;
     submitBtn.textContent = "SAVE...";
@@ -224,8 +198,7 @@
     .then(response => {
       alert("✅ ส่งข้อมูลเรียบร้อยแล้ว: " + response);
       form.reset();
-      profitInput.value = ''; // reset กำไร
-      sound.play();  // เล่นเสียง
+      profitInput.value = '';
     })
     .catch(err => {
       alert("❌ เกิดข้อผิดพลาด: " + err.message);
@@ -235,32 +208,6 @@
       submitBtn.disabled = false;
       submitBtn.textContent = "SAVE";
     });
-  });
-
-  // particles.js config
-  particlesJS("particles-js", {
-    "particles": {
-      "number": { "value": 120, "density": { "enable": true, "value_area": 800 } },
-      "color": { "value": "#ffffff" },
-      "shape": { "type": "circle" },
-      "opacity": { "value": 0.6, "random": true },
-      "size": { "value": 2, "random": true },
-      "move": {
-        "enable": true, "speed": 1,
-        "direction": "none", "out_mode": "out"
-      }
-    },
-    "interactivity": {
-      "events": {
-        "onhover": { "enable": true, "mode": "repulse" },
-        "onclick": { "enable": true, "mode": "push" }
-      },
-      "modes": {
-        "repulse": { "distance": 100, "duration": 0.4 },
-        "push": { "particles_nb": 4 }
-      }
-    },
-    "retina_detect": true
   });
 </script>
 
